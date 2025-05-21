@@ -1,0 +1,29 @@
+<!--Page showing Level State Distribution Charts-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Level State Distribution graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='graphformat.css') }}">
+</head>
+    <body>
+        <h1>Generate Level State Distribution Charts</h1>
+        <form method="post">
+            <label for="mintime">Start Time:</label>
+            <input type="datetime-local" id="mintime" name="mintime" step="1"><br><br>
+            <label for="maxtime">End Time:</label>
+            <input type="datetime-local" id="maxtime" name="maxtime" step="1"><br><br>
+            <button type="submit">Generate Graph</button>
+        </form>
+        
+        {% if plot_url %}
+            <h2>Generated Level State Distribution:</h2>
+            <img id="level" src="{{ plot_url }}" alt="Level graph">
+        {% endif %}
+        <br>
+        <a href="{{ plot_url }}" download><button type="button">Download Plot</button></a>
+        <button onclick="window.location='{{ plot_url }}'">View Plot</button>
+    </body>
+    <script src="{{ url_for('static', filename='datetimeinit.js') }}"></script>
+</html>

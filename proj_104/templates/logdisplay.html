@@ -1,0 +1,71 @@
+<!--Page showing the parsed csv file as a table-->
+
+<!DOCTYPE html>
+<html>
+<head>
+        <title>View log file</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='display.css') }}">
+</head>
+    
+<body>
+    <div class="toolbar"> <!--Toolbar at top containing buttons to filter, reset and downlaod the table-->
+        <label for="levelFilter" id="Filter1">Filter by Level:</label>
+        <select id="levelFilter">
+            <option value="ALL">ALL</option>
+            <option value="notice">notice</option>
+            <option value="error">error</option>
+        </select>
+        <label for="eventFilter" id="Filter2">Filter by Event:</label>
+        <select id="eventFilter">
+            <option value="ALL">ALL</option>
+            <option value="E1">E1</option>
+            <option value="E2">E2</option>
+            <option value="E3">E3</option>
+            <option value="E4">E4</option>
+            <option value="E5">E5</option>
+            <option value="E6">E6</option>
+        </select>
+        <button id="resetbutton">Reset Table</button>
+        <button id="downloadtable">Download Table</button>
+    </div>
+    <div id="filterModal" class="modal" style="display:none;"> <!--Time filter dialogue box-->
+        <div class="modal-content">
+            <h2>Filter Time Range</h2>
+            <label>Start: <input type="datetime-local" id="minTime"></label><br>
+            <label>End:   <input type="datetime-local" id="maxTime"></label><br>
+            <button id="applyFilter">Apply</button>
+            <button id="cancelFilter">Cancel</button>
+        </div>
+    </div>
+    <br>
+    <table id="logTable" class="display">
+        <thead>
+            <tr>
+                {% for h in headers %}
+                <th>
+                    {% if h == 'Time' %}
+                        <span>{{ h }}</span>
+                        <button id="timefilter">Filter</button>
+                    {% else %}
+                        <span>{{ h }}</span>
+                    {% endif %}
+                </th>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+<script src="{{ url_for('static', filename='displaylogs.js') }}"></script>
+
+</html>

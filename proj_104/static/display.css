@@ -1,0 +1,105 @@
+table{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    border: solid black;
+    border-collapse: collapse;
+    align-self: center;
+}
+
+th{
+    font-size: 18px;
+    background-color: #2c3e50;
+    color: white;
+    border: solid black;
+    cursor: pointer;
+    padding: 10px;
+}
+
+td{
+    padding: 2px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-left: solid black;
+    border-right: solid black; 
+}
+
+tr:nth-child(even) {
+    background-color: #ecf0f1;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;                    
+}
+
+
+th:nth-child(1), td:nth-child(1) { width: 5%; }
+th:nth-child(2), td:nth-child(2) { width: 15%; }
+th:nth-child(3), td:nth-child(3) { width: 3.5%; }
+th:nth-child(4), td:nth-child(4) { width: 42.5%; }
+th:nth-child(5), td:nth-child(5) { width: 5.5%; }
+th:nth-child(6), td:nth-child(6) { width: 29.5%; }
+
+button {
+    padding: 10px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.toolbar {
+    padding-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color:#cdcdcd;
+}
+
+#levelFilter, #eventFilter{
+    font-size: 15px;
+    padding: 8px;
+}
+
+#Filter1, #Filter2{
+    padding: 8px;
+    font-size: 18px;
+}
+
+#resetbutton{
+    margin-left: auto;
+}
+
+#downloadbutton{
+    margin-left: 10px;
+}
+
+body{
+    background-color: #cdcdcd;
+}

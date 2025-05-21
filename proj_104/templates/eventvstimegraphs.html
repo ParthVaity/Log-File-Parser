@@ -1,0 +1,38 @@
+<!--Page showing Event logged with Time graphs-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events Logged with Time Graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='graphformat.css') }}">
+</head>
+    <body>
+        <h1>Generate Event vs Time Graph</h1>
+
+        <form method="POST">
+            <label for="mintime">Start Time:</label>
+            <input type="datetime-local" id="mintime" name="mintime" step="1"><br><br>
+            <label for="maxtime">End Time:</label>
+            <input type="datetime-local" id="maxtime" name="maxtime" step="1"><br><br>
+            <label>Select Events:</label><br>
+            <input type="checkbox" name="events" value="E1"> E1
+            <input type="checkbox" name="events" value="E2"> E2
+            <input type="checkbox" name="events" value="E3"> E3
+            <input type="checkbox" name="events" value="E4"> E4
+            <input type="checkbox" name="events" value="E5"> E5
+            <input type="checkbox" name="events" value="E6"> E6<br>
+
+            <button type="submit">Generate Graph</button>
+        </form>
+
+        {% if plot_url %}
+            <h2>Generated Event-Time Graph:</h2>
+            <img id="eventvstime" src="{{ plot_url }}" alt="Event-Time Graph">
+        {% endif %}
+        <br>
+        <a href="{{ plot_url }}" download><button type="button">Download Plot</button></a>
+        <button onclick="window.location='{{ plot_url }}'">View Plot</button>
+    </body>
+    <script src="{{ url_for('static', filename='datetimeinit.js') }}"></script>
+</html>

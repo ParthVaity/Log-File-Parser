@@ -1,0 +1,35 @@
+<!--Page for Self plotting the graph based on python input-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Self Plotting of Graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='graphformat.css') }}">
+</head>
+<body>
+    <h1>Plot your own graph</h1>
+    <form method="POST"> <!--Area for adding your own code and selecting min,max time for data to be included in the plot-->
+        <textarea name="code">{{ code }}</textarea>
+        <br>
+        <label for="mintime">Start Time:</label>
+        <input type="datetime-local" name="mintime" value="1950-01-01T00:00:00"><br>
+        <label for="maxtime">End Time:</label>
+        <input type="datetime-local" name="maxtime" value="2025-01-01T00:00:00"><br>
+        <input type="hidden" name="filename" value="{{ request.view_args.filename }}">
+        <button type="submit" class="btn">Run Plot</button>
+        <button formaction="{{ url_for('reset_selfplot') }}" formmethod="post" class="btn">Reset to Default</button>
+    </form>
+    
+
+    {% if plot_url %}
+    <div class="plot-container">
+        <h2>Generated Plot:</h2>
+        <img src="{{ plot_url }}" alt="Generated Plot">
+        <br>
+        <a href="{{ plot_url }}" download><button type="button">Download Plot</button></a>
+        <button onclick="window.open('{{ plot_url }}', '_blank')">View Plot</button>
+    </div>
+    {% endif %}
+</body>
+</html>

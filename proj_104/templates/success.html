@@ -1,0 +1,22 @@
+<!--Page afer successful parsing of file-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Successful</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='success.css') }}">
+</head>
+<body>
+    <h1>Upload & Parsing Successful!</h1>
+    <ul class="mainlist">
+        <li><a href="{{ url_for('view_logs' , filename=filename) }}">View Logs</a></li>
+        <li>Select the Graph to view</a></li>
+        <ul>
+            <li><a href="{{ url_for('eventvtime_page', filename=filename) }}">Event logged with Time</a></li>
+            <li><a href="{{ url_for('level_page', filename=filename) }}">Level State Distribution</a></li>
+            <li><a href="{{ url_for('eventcode_page', filename=filename) }}">Event Code Distribution</a></li>
+            <li><a href="{{ url_for('selfplot_page', filename=filename) }}">Plot your own graph</a></li>
+        </ul>
+    </ul>
+</body>
+</html>

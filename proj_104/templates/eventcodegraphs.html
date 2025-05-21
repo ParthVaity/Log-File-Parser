@@ -1,0 +1,29 @@
+<!--Page showing Event code distribution graphs-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event Code Distribution Graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='graphformat.css') }}">
+</head>
+    <body>
+        <h1>Generate Event Code Distribution</h1>
+        <form method="post">
+            <label for="mintime">Start Time:</label>
+            <input type="datetime-local" id="mintime" name="mintime" step="1"><br><br>
+            <label for="maxtime">End Time:</label>
+            <input type="datetime-local" id="maxtime" name="maxtime" step="1"><br><br>
+            <button type="submit">Generate Graph</button>
+        </form>
+        
+        {% if plot_url %}
+            <h2>Generated Event Code Graph</h2>
+            <img id="eventcode" src="{{ plot_url }}" alt="Eventcode graph">
+        {% endif %}
+        <br>
+        <a href="{{ plot_url }}" download><button type="button">Download Plot</button></a>
+        <button onclick="window.location='{{ plot_url }}'">View Plot</button>
+    </body>
+    <script src="{{ url_for('static', filename='datetimeinit.js') }}"></script>
+</html>
